@@ -13,8 +13,10 @@ var endsWith = function(substr) {
 var _isDuplicate = function(files, file) {
   var result = false;
   for (var i = 0; i < files.length; i++) {
-    var pattern = files[i].pattern;
-    result = result || endsWith(path.relative(__dirname, file))(pattern);
+    if (files[i]) {
+      var pattern = files[i].pattern;
+      result = result || endsWith(path.relative(__dirname, file))(pattern);
+    }
   }
   return result;
 };
